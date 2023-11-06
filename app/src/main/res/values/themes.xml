@@ -1,0 +1,14 @@
+<resources>
+    <style name="Base.Theme.ApplicationStory" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/teal</item>
+        <item name="colorOnPrimary">@color/cyan</item>
+        <item name="colorSecondary">@color/dark_gray</item>
+        <item name="colorOnSecondary">@color/gray</item>
+        <item name="colorButtonNormal">@color/light_gray</item>
+        <item name="recyclerViewStyle">@color/light_gray</item>
+        <item name="cardBackgroundColor">@color/dark_gray</item>
+        <item name="backgroundColor">@color/gray</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Theme.ApplicationStory" parent="Base.Theme.ApplicationStory" />
+</resources>

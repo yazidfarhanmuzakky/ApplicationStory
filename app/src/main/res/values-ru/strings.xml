@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Приложение Опыт</string>
+    <string name="signup">Регистрация</string>
+    <string name="login">Войти</string>
+    <string name="message_welcome_page">Хотите научиться Android, iOS, машинному обучению, облачным технологиям, фронт-энду, бэк-энду и другим областям IT? Просто перейдите на Dicoding!</string>
+    <string name="title_welcome_page">Добро пожаловать на Dicoding!</string>
+    <string name="title_signup_page">Пожалуйста, заполните ваши данные ниже</string>
+    <string name="email">Электронная почта</string>
+    <string name="password">Пароль</string>
+    <string name="message_login_page">Пожалуйста, сначала введите свои данные</string>
+    <string name="title_login_page">Готовы обновить свои навыки?</string>
+    <string name="name">Имя</string>
+    <string name="message_main_page">Счастливого обучения на Dicoding.</string>
+    <string name="greeting">Привет %1$s,</string>
+    <string name="logout">Выйти</string>
+    <string name="title_welcome">Привет Yazid!</string>
+    <string name="nama_user">Имя пользователя</string>
+    <string name="empty_image_warning">Пожалуйста, сначала загрузите файл изображения</string>
+    <string name="description">Описание</string>
+    <string name="upload">Загрузить</string>
+    <string name="camera">Камера</string>
+    <string name="gallery">Галерея</string>
+    <string name="settings">Настройки</string>
+    <string name="change_language">Изменить язык</string>
+    <string name="dark_mode">Тёмный Режим</string>
+    <string name="detail_story">Детали Рассказа</string>
+    <string name="add_story">Добавить Рассказ</string>
+    <string name="yeah">Ура!</string>
+    <string name="berhasil_login">Вы успешно вошли. Не терпится начать учиться, не так ли?</string>
+    <string name="gagal_login">Не удалось войти</string>
+    <string name="gagal_memuat_data">Не удалось загрузить данные. Проверьте ваше интернет-соединение или попробуйте позже.</string>
+    <string name="username_password_salah">Неправильное имя пользователя или пароль</string>
+    <string name="oke">Хорошо</string>
+    <string name="gagal_memuat">Не удалось получить данные</string>
+    <string name="pendaftaran_gagal">Регистрация не удалась</string>
+    <string name="periksa_kembali_data">Проверьте ваши данные снова</string>
+    <string name="masukkan_email_anda">Введите свою электронную почту</string>
+    <string name="format_email_salah">Неверный формат электронной почты</string>
+    <string name="masukkan_nama_anda">Введите ваше имя</string>
+    <string name="masukkan_password_anda">Введите ваш пароль</string>
+    <string name="password_kurang_dari_8">Пароль должен состоять как минимум из 8 символов</string>
+    <string name="date">дата</string>
+    <string name="title_activity_maps">Карта</string>
+    <string name="maps">Карта</string>
+    <string name="normal_type">Обычный</string>
+    <string name="satellite_type">Спутник</string>
+    <string name="terrain_type">Рельеф</string>
+    <string name="hybrid_type">Гибрид</string>
+
+</resources>
