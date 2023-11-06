@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.applicationstory.data.UserRepository
-import com.example.applicationstory.data.local.QuoteRepository
+import com.example.applicationstory.data.local.StoryRepository
 import com.example.applicationstory.data.pref.UserPreference
-//import com.example.applicationstory.data.local.StoryRepository
 import com.example.applicationstory.data.retrofit.ApiService
 import com.example.applicationstory.di.Injection
 import com.example.applicationstory.view.maps.MapsViewModel
@@ -18,7 +17,7 @@ import com.example.applicationstory.view.signup.SignupViewModel
 class ViewModelFactory(
     private val repository: UserRepository,
     private val apiService: ApiService,
-    private val storyRepository: QuoteRepository
+    private val storyRepository: StoryRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")

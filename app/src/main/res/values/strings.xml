@@ -39,12 +39,12 @@
     <string name="masukkan_nama_anda">Masukkan Nama Anda</string>
     <string name="masukkan_password_anda">Masukkan Password Anda</string>
     <string name="password_kurang_dari_8">Password tidak boleh kurang dari 8 karakter</string>
-    <string name="date">tanggal</string>
+    <string name="date">Tanggal</string>
     <string name="title_activity_maps">Aktivitas Peta</string>
     <string name="maps">Peta</string>
     <string name="normal_type">Normal</string>
     <string name="satellite_type">Satelit</string>
     <string name="terrain_type">Lingkungan</string>
     <string name="hybrid_type">Hibrida</string>
-
+    <string name="use_location">Lokasi</string>
 </resources>

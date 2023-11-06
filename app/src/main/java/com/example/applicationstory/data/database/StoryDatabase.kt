@@ -1,32 +1,31 @@
-package com.dicoding.myunlimitedquotes.database
+package com.example.applicationstory.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.applicationstory.data.database.QuoteDao
-import com.example.applicationstory.data.response.QuoteResponseItem
+import com.example.applicationstory.data.response.StoryResponseItem
 
 @Database(
-    entities = [QuoteResponseItem::class, RemoteKeys::class],
-    version = 13,
+    entities = [StoryResponseItem::class, RemoteKeys::class],
+    version = 14,
     exportSchema = false
 )
-abstract class QuoteDatabase : RoomDatabase() {
+abstract class StoryDatabase : RoomDatabase() {
 
-    abstract fun quoteDao(): QuoteDao
+    abstract fun storyDao(): StoryDao
     abstract fun remoteKeysDao(): RemoteKeysDao
 
     companion object {
         @Volatile
-        private var INSTANCE: QuoteDatabase? = null
+        private var INSTANCE: StoryDatabase? = null
 
         @JvmStatic
-        fun getDatabase(context: Context): QuoteDatabase {
+        fun getDatabase(context: Context): StoryDatabase {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
-                    QuoteDatabase::class.java, "quote_database"
+                    StoryDatabase::class.java, "quote_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

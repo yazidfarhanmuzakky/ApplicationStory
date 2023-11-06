@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -21,12 +22,16 @@ class AddStoryViewModel : ViewModel() {
         imageFile: File,
         description: String,
         token: String?,
+        lat: Float?,
+        lon: Float?,
         onSuccess: (AddStoryResponse) -> Unit,
         onError: (String) -> Unit
     ) {
         viewModelScope.launch {
             try {
                 val requestBody = description.toRequestBody("text/plain".toMediaType())
+                val latRequestBody = lat?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
+                val lonRequestBody = lon?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
                 val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
                 val multipartBody = MultipartBody.Part.createFormData(
                     "photo",
@@ -35,7 +40,7 @@ class AddStoryViewModel : ViewModel() {
                 )
 
                 val apiService = ApiConfig.apiInstant
-                val successResponse = apiService.AddStory(multipartBody, requestBody, "Bearer $token")
+                val successResponse = apiService.AddStory(multipartBody, requestBody, latRequestBody, lonRequestBody, "Bearer $token")
 
                 withContext(Dispatchers.Main) {
                     onSuccess(successResponse)

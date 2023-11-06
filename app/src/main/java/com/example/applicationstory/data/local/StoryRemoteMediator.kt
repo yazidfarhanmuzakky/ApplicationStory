@@ -6,20 +6,20 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.dicoding.myunlimitedquotes.database.QuoteDatabase
-import com.dicoding.myunlimitedquotes.database.RemoteKeys
+import com.example.applicationstory.data.database.RemoteKeys
+import com.example.applicationstory.data.database.StoryDatabase
 import com.example.applicationstory.data.pref.UserPreference
-import com.example.applicationstory.data.response.QuoteResponseItem
+import com.example.applicationstory.data.response.StoryResponseItem
 import com.example.applicationstory.data.retrofit.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalPagingApi::class)
-class QuoteRemoteMediator(
-    private val database: QuoteDatabase,
+class StoryRemoteMediator(
+    private val database: StoryDatabase,
     private val apiService: ApiService,
     private val userPreference: UserPreference,
-) : RemoteMediator<Int, QuoteResponseItem>() {
+) : RemoteMediator<Int, StoryResponseItem>() {
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
@@ -31,7 +31,7 @@ class QuoteRemoteMediator(
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, QuoteResponseItem>
+        state: PagingState<Int, StoryResponseItem>
     ): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH ->{
@@ -67,7 +67,7 @@ class QuoteRemoteMediator(
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     database.remoteKeysDao().deleteRemoteKeys()
-                    database.quoteDao().deleteAll()
+                    database.storyDao().deleteAll()
                 }
                 val prevKey = if (page == 1) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
@@ -76,7 +76,7 @@ class QuoteRemoteMediator(
                 }
                 withContext(Dispatchers.IO) {
                     database.remoteKeysDao().insertAll(keys)
-                    database.quoteDao().insertQuote(responseData.listStory)
+                    database.storyDao().insertQuote(responseData.listStory)
                 }
             }
 
@@ -87,19 +87,19 @@ class QuoteRemoteMediator(
 
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, QuoteResponseItem>): RemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, StoryResponseItem>): RemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { data ->
             database.remoteKeysDao().getRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, QuoteResponseItem>): RemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, StoryResponseItem>): RemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { data ->
             database.remoteKeysDao().getRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, QuoteResponseItem>): RemoteKeys? {
+    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, StoryResponseItem>): RemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
                 database.remoteKeysDao().getRemoteKeysId(id)

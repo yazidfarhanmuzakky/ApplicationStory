@@ -40,12 +40,12 @@
     <string name="masukkan_nama_anda">Enter Your Name</string>
     <string name="masukkan_password_anda">Enter Your Password</string>
     <string name="password_kurang_dari_8">Password must be at least 8 characters long</string>
-    <string name="date">date</string>
+    <string name="date">Date</string>
     <string name="title_activity_maps">Maps Activity</string>
     <string name="maps">Maps</string>
     <string name="normal_type">Normal</string>
     <string name="satellite_type">Satellite</string>
     <string name="terrain_type">Terrain</string>
     <string name="hybrid_type">Hybrid</string>
-
+    <string name="use_location">Location</string>
 </resources>

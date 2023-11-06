@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.applicationstory.data.response.QuoteResponseItem
+import com.example.applicationstory.data.response.StoryResponseItem
 import com.example.applicationstory.databinding.ItemListStoryBinding
 import com.example.applicationstory.formatter.DateFormatter
 import java.util.TimeZone
 
-class QuoteListAdapter :
-    PagingDataAdapter<QuoteResponseItem, QuoteListAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class StoryListAdapter :
+    PagingDataAdapter<StoryResponseItem, StoryListAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     private var onItemClickcallBack: OnItemClickcallBack? = null
 
@@ -38,7 +38,7 @@ class QuoteListAdapter :
 
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: QuoteResponseItem) {
+        fun bind(data: StoryResponseItem) {
 
             binding.root.setOnClickListener {
                 onItemClickcallBack?.onItemClicked(data)
@@ -82,16 +82,16 @@ class QuoteListAdapter :
     }
 
     interface OnItemClickcallBack{
-        fun onItemClicked(data: QuoteResponseItem)
+        fun onItemClicked(data: StoryResponseItem)
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<QuoteResponseItem>() {
-            override fun areItemsTheSame(oldItem: QuoteResponseItem, newItem: QuoteResponseItem): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryResponseItem>() {
+            override fun areItemsTheSame(oldItem: StoryResponseItem, newItem: StoryResponseItem): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: QuoteResponseItem, newItem: QuoteResponseItem): Boolean {
+            override fun areContentsTheSame(oldItem: StoryResponseItem, newItem: StoryResponseItem): Boolean {
                 return oldItem.id == newItem.id
             }
         }

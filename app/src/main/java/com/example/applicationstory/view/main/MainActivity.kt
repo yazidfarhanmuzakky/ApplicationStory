@@ -15,10 +15,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.applicationstory.R
 import com.example.applicationstory.adapter.LoadingStateAdapter
-import com.example.applicationstory.adapter.QuoteListAdapter
+import com.example.applicationstory.adapter.StoryListAdapter
 import com.example.applicationstory.data.pref.UserPreference
 import com.example.applicationstory.data.pref.dataStore
-import com.example.applicationstory.data.response.QuoteResponseItem
+import com.example.applicationstory.data.response.StoryResponseItem
 import com.example.applicationstory.databinding.ActivityMainBinding
 import com.example.applicationstory.view.ViewModelFactory
 import com.example.applicationstory.view.maps.MapsActivity
@@ -55,24 +55,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        viewModel.getListStories().observe(this, {
-//            if (it != null) {
-//                adapter.setList(it)
-//            } else {
-//                AlertDialog.Builder(this@MainActivity).apply {
-//                    setTitle(R.string.gagal_memuat_data)
-//                    setMessage(R.string.gagal_memuat_data)
-//                    setPositiveButton(R.string.oke) { _, _ ->
-//                    }
-//                    val intent = Intent(context, MainActivity::class.java)
-//                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                    startActivity(intent)
-//                    finish()
-//                    showLoading(false)
-//                }
-//            }
-//        })
-
         binding.imageAdd.setOnClickListener {
                 lifecycleScope.launch {
                     val token = UserPreference.getInstance(dataStore).getToken()
@@ -103,9 +85,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        val adapter = QuoteListAdapter()
-        adapter.setOnItemClickCallback(object : QuoteListAdapter.OnItemClickcallBack {
-            override fun onItemClicked(data: QuoteResponseItem) {
+        val adapter = StoryListAdapter()
+        adapter.setOnItemClickCallback(object : StoryListAdapter.OnItemClickcallBack {
+            override fun onItemClicked(data: StoryResponseItem) {
                 lifecycleScope.launch {
                     val token = UserPreference.getInstance(dataStore).getToken()
                     Intent(this@MainActivity, DetailStoryActivity::class.java).also {

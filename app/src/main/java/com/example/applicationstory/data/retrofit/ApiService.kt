@@ -1,15 +1,11 @@
 package com.example.applicationstory.data.retrofit
 
-import com.example.applicationstory.data.response.StoryResponseItem
 import com.example.applicationstory.data.response.AddStoryResponse
 import com.example.applicationstory.data.response.DetailStoryResponse
 import com.example.applicationstory.data.response.LoginResponse
-import com.example.applicationstory.data.response.QuoteResponse
 import com.example.applicationstory.data.response.RegisterResponse
 import com.example.applicationstory.data.response.StoriesResponse
-import com.example.applicationstory.data.response.StoriesResponseList
-import com.example.applicationstory.data.response.StoryItem
-import com.example.applicationstory.data.response.StoryPagingResponse
+import com.example.applicationstory.data.response.StoryResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -45,7 +41,7 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("size") size: Int,
         @Header("Authorization") authorization: String
-    ): QuoteResponse
+    ): StoryResponse
 
     @GET("stories/{id}")
     fun detailStories(
@@ -58,6 +54,8 @@ interface ApiService {
     suspend fun AddStory(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
+        @Part("lat") lat: RequestBody?,
+        @Part("lon") lon: RequestBody?,
         @Header("Authorization") authorization: String,
     ): AddStoryResponse
 

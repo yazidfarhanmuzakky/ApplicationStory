@@ -5,13 +5,13 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 
-data class QuoteResponse(
+data class StoryResponse(
 	val error: Boolean,
 	val message: String,
-	val listStory: List<QuoteResponseItem>
+	val listStory: List<StoryResponseItem>
 )
-@Entity(tableName = "quote")
-data class QuoteResponseItem(
+@Entity(tableName = "story")
+data class StoryResponseItem(
 
 	@PrimaryKey
 	@field:SerializedName("id")

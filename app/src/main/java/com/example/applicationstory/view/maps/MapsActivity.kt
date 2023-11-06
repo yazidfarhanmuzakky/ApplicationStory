@@ -57,7 +57,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lifecycleScope.launch {
             val token = UserPreference.getInstance(dataStore).getToken()
             viewModel.getAllStories(location = 1, "Bearer $token")
-            Log.d("token", "$token")
         }
 
         viewModel.getListStories().observe(this, { storiesResponse ->
@@ -148,7 +147,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         storyItems.forEach { story ->
             val latLng = LatLng(story.lat.toDouble(), story.lon.toDouble())
             mMap.addMarker(MarkerOptions().position(latLng).title(story.name))
-            Log.d("getliststories","$latLng")
             boundsBuilder.include(latLng)
         }
 

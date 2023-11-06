@@ -7,16 +7,16 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.applicationstory.data.UserRepository
-import com.example.applicationstory.data.local.QuoteRepository
+import com.example.applicationstory.data.local.StoryRepository
 import com.example.applicationstory.data.pref.UserModel
-import com.example.applicationstory.data.response.QuoteResponseItem
+import com.example.applicationstory.data.response.StoryResponseItem
 
-class MainViewModel(storyRepository: QuoteRepository, private val repository: UserRepository) : ViewModel() {
+class MainViewModel(storyRepository: StoryRepository, private val repository: UserRepository) : ViewModel() {
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
 
-    val story: LiveData<PagingData<QuoteResponseItem>> =
+    val story: LiveData<PagingData<StoryResponseItem>> =
         storyRepository.getQuote().cachedIn(viewModelScope)
 }
